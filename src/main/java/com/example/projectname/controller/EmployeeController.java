@@ -21,9 +21,7 @@ public class EmployeeController {
     private EmployeeRepository employeeRepository;
 
 
-//  get all employees
-
-
+    // get all employees
     @GetMapping("/employees")
     public List<Employee> getAllEmployees(Model model) {
 
@@ -33,8 +31,7 @@ public class EmployeeController {
 
 
 
-//  get all employees by id
-
+    // get all employees by id
     @GetMapping("/employees/{id}")
     public ResponseEntity<Employee> getEmployeeById(@PathVariable(value = "id") Long employeeId)
             throws ResourcesNotFoundException {
@@ -43,15 +40,13 @@ public class EmployeeController {
         return ResponseEntity.ok().body(employee);
     }
 
-//  save employee
-
+    // save employee
     @PostMapping("/employees")
     public Employee createEmployee(@Valid @RequestBody Employee employee) {
         return employeeRepository.save(employee);
     }
 
-//  Update Employee
-
+    // Update Employee
     @PutMapping("/employees/{id}")
     public ResponseEntity<Employee> updateEmployee(@PathVariable(value = "id") Long employeeId,
                                                    @Valid @RequestBody Employee employeeDetails)
@@ -72,8 +67,7 @@ public class EmployeeController {
 
     }
 
-//  Delete Employee
-
+    // Delete Employee
     @DeleteMapping("/employees/{id}")
     public Map<String, Boolean> deletedEmployee(@PathVariable(value = "id") Long employeeId)
             throws ResourcesNotFoundException {
@@ -86,7 +80,6 @@ public class EmployeeController {
         response.put("deleted employee", Boolean.TRUE);
 
         return response;
-
     }
 
 
